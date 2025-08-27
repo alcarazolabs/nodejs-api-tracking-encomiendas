@@ -1,0 +1,16 @@
+services:
+  encomiendas-tracker-app-nodejs:
+    build: .
+    container_name: encomiendas-tracker-app-nodejs
+    ports:
+      - "7000:7000"
+    restart: unless-stopped
+    volumes:
+      - .:/app
+      - /app/node_modules
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    external: true # usar red externa creada con "docker network create app-network"
